@@ -84,4 +84,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+# http://www.marinamele.com/taskbuster-django-tutorial/create-home-page-with-tdd-staticfiles-templates-settings#static-files
+# Django will look for static files in a folder named static inside each app
 STATIC_URL = '/static/'
+# and into the quevicio/static folder we just created.
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+#  Django will look for templates located at a folder named templates inside each app 
+# and inside the taskbuster/templates folder we just created.
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
