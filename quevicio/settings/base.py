@@ -8,6 +8,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 from django.core.exceptions import ImproperlyConfigured
+from django.utils.translation import ugettext_lazy as _
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -30,7 +31,6 @@ SECRET_KEY = get_env_variable('SECRET_KEY')
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -44,6 +44,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -70,6 +71,11 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
+LANGUAGES = (
+    ('en', _('English')),
+    ('es', _('Spanish')),
+)
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -80,6 +86,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+# path to .po .mo translations
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+TIME_ZONE = 'Europe/Madrid'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
